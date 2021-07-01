@@ -3,9 +3,11 @@ import singImg from "../../images/sing.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./footer.scss";
 import { SingContext } from "../../context/SingContext";
+import Player from "../Sing/PlaySong";
 
 export default function () {
   const { currentSing } = useContext(SingContext);
+  console.log(currentSing);
   return (
     <div className="container footer">
       <div className="row align-items-end">
@@ -16,9 +18,10 @@ export default function () {
             </div>
             <div className="currentPlay__info">
               <div className="currentPlay__info-singName">
-                {currentSing.sing.singName || 'nghiadx'}
+
+                {currentSing && (currentSing?.sing?.singName || 'Chưa chọn bài hát')}
               </div>
-              <div className="currentPlay__info-singerName">{currentSing.sing.singerName}</div>
+              <div className="currentPlay__info-singerName">{currentSing && currentSing?.sing?.singerName}</div>
             </div>
             <div className="currentPlay__icons">
               <FontAwesomeIcon className="" icon="heart" />
@@ -26,34 +29,9 @@ export default function () {
           </div>
         </div>
         <div className="col-4">
-          <div className="sing">
-            <div className="sing__control d-flex justify-content-around align-items-center">
-              <div className="sing__control-item">
-                <FontAwesomeIcon icon="redo" />
-              </div>
-              <div className="sing__control-item">
-                <FontAwesomeIcon icon="step-backward" />
-              </div>
-              <div className="sing__control-item">
-                {/* <FontAwesomeIcon icon="faPause" /> */}
-                <FontAwesomeIcon icon="play" />
-              </div>
-              <div className="sing__control-item">
-                <FontAwesomeIcon icon="step-forward" />
-              </div>
-              <div className="sing__control-item">
-                <FontAwesomeIcon icon="random" />
-              </div>
-            </div>
-            <input
-              type="range"
-              className="progress"
-              value="0"
-              step="1"
-              min="0"
-              max="100"
-            />
-          </div>
+          
+            <Player />
+         
         </div>
         <div className="col-4 d-flex justify-content-end">
           <div className="referent">

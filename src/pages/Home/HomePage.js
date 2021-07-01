@@ -4,7 +4,7 @@ import PlayList from "../../components/Sing/SingList";
 import "./home.scss";
 import axios from "axios";
 
-export default function () {
+export default function (props) {
     const [singSate, setSingSate] = useState([]);
 
     useEffect(() => {

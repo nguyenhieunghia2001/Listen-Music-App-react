@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
@@ -17,7 +16,7 @@ import {
   faAd,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch} from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import HomePage from "./pages/Home/HomePage";

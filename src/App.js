@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 import Navbar from './components/navbar/navbar'
 import Footer from './components/footer/footer'
-import Body from './components/body/body'
+import HomePage from './pages/Home/HomePage'
 
 library.add(fab, faCog, faHeart, faRedo, faStepBackward, faPause, faPlay, faStepForward, faRandom, faAd )
 
@@ -28,7 +28,7 @@ function App() {
         <Navbar />
       </header>
       <main>
-        <Body />
+        <HomePage />
       </main>
       <footer>
         <Footer />

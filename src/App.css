@@ -1,15 +1,18 @@
 
 header {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: fixed;
+  width: 100%;
 }
 body {
   position: relative;
   background: #170f23;
   min-height: 100vh;
+  padding-bottom: 90px;
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   background: #120c1c;
   width: 100%;
   padding: 15px 0;
@@ -17,5 +20,5 @@ footer {
   border-top: 1px solid #bdbdbd;
 }
 main{
-  padding-top: 30px;
+  padding-top: 90px;
 }

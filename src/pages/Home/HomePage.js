@@ -15,7 +15,8 @@ export default function () {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-4">
+                <div className="col-4"></div>
+                <div className="col-4" style={{position: "fixed", zIndex: "-1"}}>
                     <div className="album__left">
                         <div className="album__img">
                             <img src={albumImg} alt="img"/>

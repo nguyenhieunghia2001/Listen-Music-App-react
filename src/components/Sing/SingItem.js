@@ -1,18 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import albumImg from "../../images/mixtape.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SingContext } from "../../context/SingContext";
+import SongLike from "../Like/SongLike";
+import { FaPlay } from 'react-icons/fa';
+import "./song.scss";
 
 export default function ({ sings }) {
-  const { changeSing } = useContext(SingContext);
+  const { changeSing, currentSing } = useContext(SingContext);
   return (
     <tbody>
       {sings &&
         sings.map((sing) => (
-          <tr key={sing.id}>
+          <tr
+            key={sing.id}
+            className={currentSing.sing && currentSing.sing.id === sing.id ? "sing-active" : ""}
+          >
             <td>
               <div className="sings__info">
-                <img src={albumImg} onClick={() => changeSing(sing)} style={{cursor: "pointer"}}/>
+                <div className="sings__info-img">
+                  <img
+                    src={albumImg}
+                    onClick={() => changeSing(sing)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <div className="sings__info-img-icon">
+                    <FaPlay />
+                  </div>
+                </div>
+
                 <div className="sings__info-content">
                   <h6>{sing.singName}</h6>
                   <span>{sing.singerName}</span>
@@ -24,7 +39,7 @@ export default function ({ sings }) {
             </td>
             <td className="align-middle">
               <div className="sings__control">
-                <FontAwesomeIcon className="" icon="heart" />
+                <SongLike song={sing} />
               </div>
             </td>
           </tr>

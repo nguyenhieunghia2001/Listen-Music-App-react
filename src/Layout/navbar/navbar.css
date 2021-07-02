@@ -1,6 +1,6 @@
 .navCircle {
   position: relative;
-  
+  cursor: pointer;
   background: #2a213a;
   width: 45px;
   height: 45px;

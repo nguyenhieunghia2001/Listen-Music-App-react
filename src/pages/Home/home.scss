@@ -1,5 +1,6 @@
 $colorFontPrimary: #fff;
 $colorFontSecond: #484151;
+$hoverSongItem: #2d2539de;
 .album {
   &__left {
     display: flex;
@@ -44,18 +45,38 @@ $colorFontSecond: #484151;
     }
     tr {
       border-color: #eeeeee40 !important;
+      &:hover{
+        background: $hoverSongItem;
+        .sings__info-img-icon{
+          z-index: 10;
+        }
+        img{
+          opacity: .4;
+        }
+      }
     }
-    td{
+    td {
       padding: 10px !important;
     }
   }
   &__info {
     display: flex;
-
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
+    &-img {
+      position: relative;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        z-index: 1;
+      }
+      &-icon{
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
     }
     &-content {
       padding-left: 8px;
@@ -75,5 +96,12 @@ $colorFontSecond: #484151;
   &__control {
     color: $colorFontPrimary;
     text-align: center;
+  }
+}
+
+.icon__font {
+  &-md {
+    font-size: 25px;
+    cursor: pointer;
   }
 }

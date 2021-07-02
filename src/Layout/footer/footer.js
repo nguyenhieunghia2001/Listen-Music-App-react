@@ -3,11 +3,10 @@ import singImg from "../../images/sing.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./footer.scss";
 import { SingContext } from "../../context/SingContext";
-import Player from "../Sing/PlaySong";
+import Player from "../../components/Sing/PlaySong";
 
 export default function () {
   const { currentSing } = useContext(SingContext);
-  console.log(currentSing);
   return (
     <div className="container footer">
       <div className="row align-items-end">
@@ -30,7 +29,7 @@ export default function () {
         </div>
         <div className="col-4">
           
-            <Player />
+            <Player url={currentSing && currentSing?.sing?.song}/>
          
         </div>
         <div className="col-4 d-flex justify-content-end">

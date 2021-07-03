@@ -9,7 +9,7 @@ import AvatarImg from '../../images/avatar.jpg'
 export default function () {
   const { songLikeList } = useContext(SingContext);
   return (
-    <Layout>
+    // <Layout>
       <Container>
         <div className="profile">
           <idv className="profile__info">
@@ -57,6 +57,6 @@ export default function () {
           </div>
         </div>
       </Container>
-    </Layout>
+    // </Layout>
   );
 }

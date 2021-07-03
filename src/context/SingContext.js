@@ -16,7 +16,7 @@ export default function ({ children }) {
   const removeLike = async (song) => {
     console.log('remove', song);
     const index = songLikeState.map((item) => item.id).indexOf(song.id);
-    if (index < 1) return;
+    if (index < 0) return;
     const arrNew = [
       ...songLikeState.slice(0, index),
       ...songLikeState.slice(index + 1, songLikeState.length),

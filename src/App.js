@@ -19,6 +19,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import SingProvider from "./context/SingContext";
 import ProfilePage from "./pages/Profile/profile";
+import Layout from "./Layout/Layout";
 
 library.add(
   fab,
@@ -38,11 +39,12 @@ function App() {
   return (
     <SingProvider>
       <Router>
-        
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/profile" exact component={ProfilePage} />
-        </Switch>
+        <Layout>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/profile" exact component={ProfilePage} />
+          </Switch>
+        </Layout>
       </Router>
     </SingProvider>
   );

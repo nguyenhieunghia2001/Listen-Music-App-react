@@ -27,7 +27,7 @@ export default function (props) {
   );
 console.log('home page');
   return (
-    <Layout>
+    // <Layout>
       <div className="container">
         <div className="row">
           <div className="col-4"></div>
@@ -59,6 +59,6 @@ console.log('home page');
           </div>
         </div>
       </div>
-    </Layout>
+    // </Layout>
   );
 }

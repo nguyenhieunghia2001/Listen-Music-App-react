@@ -1,5 +1,6 @@
+$hoverSongItem: #2d2539de;
 .sing-active {
-  background: #484151;
+  background: $hoverSongItem;
 
   &-img {
   }

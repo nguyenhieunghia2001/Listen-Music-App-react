@@ -1,6 +1,5 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer/footer";
 

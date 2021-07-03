@@ -8,7 +8,7 @@ const Player = ({ url }) => {
     const [audioIndex, setAudioIndex] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [isPlay, setPlay] = useState(false);
+    const [isPlay, setPlay] = useState(true);
 
     const handleLoadedData = () => {
         setDuration(audioRef.current.duration);

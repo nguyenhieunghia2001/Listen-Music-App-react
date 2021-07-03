@@ -44,7 +44,7 @@ $hoverSongItem: #2d2539de;
       }
     }
     tr {
-      border-color: #eeeeee40 !important;
+      border-color: $hoverSongItem !important;
       &:hover{
         background: $hoverSongItem;
         .sings__info-img-icon{

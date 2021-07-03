@@ -7,26 +7,25 @@ import axios from "axios";
 
 export default function (props) {
   const [singSate, setSingSate] = useState([]);
-  console.log(1);
 
-  useEffect( async () =>
-      // (async function () {
-      //   try {
-      //     const { data } = await axios.get(
-      //       "https://g0lq8.sse.codesandbox.io/sings"
-      //     );
-      //     setSingSate(data);
-      //   } catch (error) {
-      //     console.log(error);
-      //     return;
-      //   }
-      // })();
-      await axios
-        .get("https://g0lq8.sse.codesandbox.io/sings")
-        .then((res) => setSingSate(res.data)),
-    []
+  useEffect(async () =>
+    (async function () {
+      try {
+        const { data } = await axios.get(
+          "https://g0lq8.sse.codesandbox.io/sings"
+        );
+        setSingSate(data);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    })(), []
+    // await axios
+    //     .get("https://g0lq8.sse.codesandbox.io/sings")
+    //     .then((res) => setSingSate(res.data)),
+    // []
   );
-
+console.log('home page');
   return (
     <Layout>
       <div className="container">

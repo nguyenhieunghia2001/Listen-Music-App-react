@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import albumImg from "../../images/mixtape.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SingContext } from "../../context/SingContext";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 export default function ({ song }) {
   const { songLikeList, addLike, removeLike } = useContext(SingContext);
-  
-  const [isLike, setIsLike] = useState(false);
 
-  const toggle = () => setIsLike(!isLike);
+  const [isLike, setIsLike] = useState(
+    songLikeList.map((item) => item.id).indexOf(song.id) > -1 ? true : false
+  );
 
-  useEffect(() => {
-    isLike ? addLike(song) : removeLike(song);
-  }, [isLike]);
+  const toggle = () => {
+    !isLike ? addLike(song) : removeLike(song);
+    setIsLike(!isLike);
+  };
 
   return (
     <div onClick={toggle}>

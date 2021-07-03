@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import albumImg from "../../images/mixtape.jpg";
 import { SingContext } from "../../context/SingContext";
 import SongLike from "../Like/SongLike";
-import { FaPlay } from 'react-icons/fa';
+import { FaPlay } from "react-icons/fa";
 import "./song.scss";
 
 export default function ({ sings }) {
@@ -13,16 +13,20 @@ export default function ({ sings }) {
         sings.map((sing) => (
           <tr
             key={sing.id}
-            className={currentSing.sing && currentSing.sing.id === sing.id ? "sing-active" : ""}
+            className={
+              currentSing.sing && currentSing.sing.id === sing.id
+                ? "sing-active"
+                : ""
+            }
           >
             <td>
               <div className="sings__info">
-                <div className="sings__info-img">
-                  <img
-                    src={albumImg}
-                    onClick={() => changeSing(sing)}
-                    style={{ cursor: "pointer" }}
-                  />
+                <div
+                  className="sings__info-img"
+                  onClick={() => changeSing(sing)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <img src={albumImg} />
                   <div className="sings__info-img-icon">
                     <FaPlay />
                   </div>

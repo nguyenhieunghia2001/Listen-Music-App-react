@@ -15,7 +15,7 @@ import {
   faAd,
   faCoffee,
 } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import SingProvider from "./context/SingContext";
 import ProfilePage from "./pages/Profile/profile";
@@ -34,8 +34,6 @@ library.add(
   faCoffee
 );
 
-const test = () => <h2>nghiadx</h2>;
-const test2 = () => <h2>nghiadx2</h2>;
 function App() {
   return (
     <SingProvider>

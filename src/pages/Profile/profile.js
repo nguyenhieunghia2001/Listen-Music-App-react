@@ -12,10 +12,10 @@ export default function () {
     // <Layout>
       <Container>
         <div className="profile">
-          <idv className="profile__info">
+          <div className="profile__info">
             <img src={AvatarImg} alt="avatar" />
             <h4>NghĩaDX</h4>
-          </idv>
+          </div>
           <div className="profile__menu">
             <ul>
               <li >

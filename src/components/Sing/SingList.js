@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import SingItem from "./SingItem";
 
-export default function ({ sings }) {
+const SingList = function ({ sings }) {
   return (
     <Table>
       <thead>
@@ -16,3 +16,8 @@ export default function ({ sings }) {
     </Table>
   );
 }
+const shouldComponentUpdate= (nextProps, nextState)=> {
+  return false;
+}
+
+export default React.memo(SingList, shouldComponentUpdate);

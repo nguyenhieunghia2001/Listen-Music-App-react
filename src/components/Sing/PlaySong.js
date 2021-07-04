@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TimeSlider from "react-input-slider";
 import { SingContext } from "../../context/SingContext";
+import { AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
 
 const Player = ({ url }) => {
   const audioRef = useRef();
@@ -10,6 +11,8 @@ const Player = ({ url }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlay, setPlay] = useState(currentSing.sing ? true : false);
+  const [isLoopState, setIsLoopState] = useState(false);
+  const [isRandomState, setIsRandomState] = useState(false);
   const handleLoadedData = () => {
     setDuration(audioRef.current.duration);
     if (isPlay) audioRef.current.play();
@@ -47,7 +50,17 @@ const Player = ({ url }) => {
         const index = songsState
           .map((item) => item.id)
           .indexOf(currentSing.sing.id);
-        const song = control === "NEXT" ? songsState[index + 1] : songsState[index - 1];
+        let song;
+        switch (control) {
+          case "NEXT":
+            song = songsState[index + 1];
+            break;
+          case "PRE":
+            song = songsState[index - 1];
+            break;
+          default:
+            break;
+        }
         return song;
       } catch (error) {
         return undefined;
@@ -65,29 +78,57 @@ const Player = ({ url }) => {
         song && changeSing(song);
       }
     },
-
+    randomSong: function () {
+      if (currentSing) {
+        const index = Math.floor(Math.random() * songsState.length);
+        const song = songsState[index];
+        song && changeSing(song);
+      }
+    },
+    endSong: function () {
+      setPlay(false);
+      setTimeout(async () => {
+        isRandomState
+          ? await hanleSongs.randomSong()
+          : isLoopState
+          ? setPlay(true)
+          : await hanleSongs.nextSong();
+      }, 2000);
+    },
   };
   return (
     <div className="sing">
       <div className="sing__control d-flex justify-content-around align-items-center">
-        <div className="sing__control-item">
-          <FontAwesomeIcon icon="redo" />
+        <div
+          className="sing__control-item"
+          onClick={() => setIsLoopState(!isLoopState)}
+        >
+          <FontAwesomeIcon
+            icon="redo"
+            className={isLoopState ? "icon-action" : ""}
+          />
         </div>
         <div className="sing__control-item" onClick={hanleSongs.preSong}>
           <FontAwesomeIcon icon="step-backward" />
         </div>
         <div className="sing__control-item" onClick={toggle}>
           {isPlay ? (
-            <FontAwesomeIcon icon="pause" />
+            <AiOutlinePauseCircle className="control-primary"/>
           ) : (
-            <FontAwesomeIcon icon="play" />
+            <AiOutlinePlayCircle className="control-primary"/>
           )}
         </div>
         <div className="sing__control-item" onClick={hanleSongs.nextSong}>
           <FontAwesomeIcon icon="step-forward" />
         </div>
-        <div className="sing__control-item">
-          <FontAwesomeIcon icon="random" />
+        <div
+          className="sing__control-item"
+          onClick={() => setIsRandomState(!isRandomState)}
+        >
+          <FontAwesomeIcon
+            icon="random"
+            className={isRandomState ? "icon-action" : ""}
+          />
         </div>
       </div>
       <TimeSlider
@@ -119,7 +160,7 @@ const Player = ({ url }) => {
         src={url}
         onLoadedData={handleLoadedData}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
-        onEnded={() => setPlay(false)}
+        onEnded={hanleSongs.endSong}
       />
     </div>
   );

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import albumImg from "../../images/mixtape.jpg";
 import PlayList from "../../components/Sing/SingList";
-import Layout from "../../Layout/Layout";
 import "./home.scss";
 import axios from "axios";
 
-export default function (props) {
+const HomePage = (props) => {
   const [singSate, setSingSate] = useState([]);
 
   //DidMount
@@ -65,3 +64,10 @@ export default function (props) {
     // </Layout>
   );
 }
+
+const shouldComponentUpdate = (preProps, nextState) =>{
+  console.log(preProps, nextState);
+  return false;
+}
+
+export default React.memo(HomePage, shouldComponentUpdate);

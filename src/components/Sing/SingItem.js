@@ -5,7 +5,7 @@ import SongLike from "../Like/SongLike";
 import { FaPlay } from "react-icons/fa";
 import "./song.scss";
 
-export default function ({ sings }) {
+const SongItem = function ({ sings }) {
   const { changeSing, currentSing } = useContext(SingContext);
   return (
     <tbody>
@@ -51,3 +51,8 @@ export default function ({ sings }) {
     </tbody>
   );
 }
+const shouldComponentUpdate = (preProps, nextState) => {
+  // console.log(preProps, nextState);
+  return false
+}
+export default React.memo(SongItem, shouldComponentUpdate);

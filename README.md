@@ -1,7 +1,12 @@
 # React Js
 ### Project 3: App listen music Basic
 ### Server link:   
-
+### Infomation of the application: 
+- Page: Home and music love
+- Function: 
+  - Play - Pause - Next - Pre - Loop - Radom music
+  - Add and remove to love list
+  - Listen music when redirect page :3
 # Component Lifecycle
 
 **DidMount**

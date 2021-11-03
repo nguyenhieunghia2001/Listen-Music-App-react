@@ -20,6 +20,8 @@ import HomePage from "./pages/Home/HomePage";
 import SingProvider from "./context/SingContext";
 import ProfilePage from "./pages/Profile/profile";
 import Layout from "./Layout/Layout";
+import { Provider } from "react-redux";
+import store from "./App/store";
 
 library.add(
   fab,
@@ -37,16 +39,18 @@ library.add(
 
 function App() {
   return (
-    <SingProvider>
-      <Router>
-        <Layout>
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/profile" exact component={ProfilePage} />
-          </Switch>
-        </Layout>
-      </Router>
-    </SingProvider>
+    <Provider store={store}>
+      <SingProvider>
+        <Router>
+          <Layout>
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/profile" exact component={ProfilePage} />
+            </Switch>
+          </Layout>
+        </Router>
+      </SingProvider>
+    </Provider>
   );
 }
 

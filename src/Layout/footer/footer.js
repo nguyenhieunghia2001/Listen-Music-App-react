@@ -5,7 +5,7 @@ import "./footer.scss";
 import { SingContext } from "../../context/SingContext";
 import Player from "../../components/Sing/PlaySong";
 
-export default function () {
+const Footer = () => {
   const { currentSing } = useContext(SingContext);
   return (
     <div className="container footer">
@@ -17,10 +17,12 @@ export default function () {
             </div>
             <div className="currentPlay__info">
               <div className="currentPlay__info-singName">
-
-                {currentSing && (currentSing?.sing?.singName || 'Chưa chọn bài hát')}
+                {currentSing &&
+                  (currentSing?.sing?.singName || "Chưa chọn bài hát")}
               </div>
-              <div className="currentPlay__info-singerName">{currentSing && currentSing?.sing?.singerName}</div>
+              <div className="currentPlay__info-singerName">
+                {currentSing && currentSing?.sing?.singerName}
+              </div>
             </div>
             <div className="currentPlay__icons">
               <FontAwesomeIcon className="" icon="heart" />
@@ -28,9 +30,7 @@ export default function () {
           </div>
         </div>
         <div className="col-4">
-          
-            <Player url={currentSing && currentSing?.sing?.song}/>
-         
+          <Player url={currentSing && currentSing?.sing?.song} />
         </div>
         <div className="col-4 d-flex justify-content-end">
           <div className="referent">
@@ -40,4 +40,5 @@ export default function () {
       </div>
     </div>
   );
-}
+};
+export default Footer;

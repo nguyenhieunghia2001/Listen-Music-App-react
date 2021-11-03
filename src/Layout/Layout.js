@@ -3,7 +3,7 @@ import React from "react";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer/footer";
 
-export default function ({ children }) {
+const Layout = ({ children }) => {
   return (
     <>
       <header>
@@ -15,4 +15,5 @@ export default function ({ children }) {
       </footer>
     </>
   );
-}
+};
+export default Layout;

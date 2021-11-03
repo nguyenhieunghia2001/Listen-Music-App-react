@@ -4,29 +4,19 @@ import PlayList from "../../components/Sing/SingList";
 import "./home.scss";
 import axios from "axios";
 
-const HomePage = (props) => {
+const HomePage = () => {
   const [singSate, setSingSate] = useState([]);
-
-  //DidMount
-  // useEffect(()=> )
-
   //DidUpdate
-  useEffect(
-    async () =>
-      (async function () {
-        try {
-          const { data } = await axios.get(
-            "https://g0lq8.sse.codesandbox.io/sings"
-          );
-          localStorage.setItem("songs", JSON.stringify(data));
-          setSingSate(data);
-        } catch (error) {
-          console.log(error);
-          return;
-        }
-      })(),
-    []
-  );
+  useEffect( () => {
+    const fetch = async () => {
+      const { data } = await axios.get(
+        "https://g0lq8.sse.codesandbox.io/sings"
+      );
+      localStorage.setItem("songs", JSON.stringify(data));
+      setSingSate(data);
+    };
+    fetch();
+  }, []);
 
   return (
     // <Layout>
@@ -63,11 +53,11 @@ const HomePage = (props) => {
     </div>
     // </Layout>
   );
-}
+};
 
-const shouldComponentUpdate = (preProps, nextState) =>{
-  console.log(preProps, nextState);
+const shouldComponentUpdate = () => {
+  // console.log(preProps, nextState);
   return false;
-}
+};
 
 export default React.memo(HomePage, shouldComponentUpdate);

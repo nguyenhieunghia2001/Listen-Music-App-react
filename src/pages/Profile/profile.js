@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { Table, Container} from "reactstrap";
 import SingItem from "../../components/Sing/SingItem";
 import { SingContext } from "../../context/SingContext";
-import Layout from "../../Layout/Layout";
 import './profile.scss'
 import AvatarImg from '../../images/avatar.jpg'
 
-export default function () {
+function Profile()   {
   const { songLikeList } = useContext(SingContext);
   return (
     // <Layout>
@@ -60,3 +59,4 @@ export default function () {
     // </Layout>
   );
 }
+export default Profile

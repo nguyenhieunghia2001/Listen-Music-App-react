@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import albumImg from "../../images/mixtape.jpg";
 import { SingContext } from "../../context/SingContext";
 import SongLike from "../Like/SongLike";
@@ -26,7 +26,7 @@ const SongItem = function ({ sings }) {
                   onClick={() => changeSing(sing)}
                   style={{ cursor: "pointer" }}
                 >
-                  <img src={albumImg} />
+                  <img src={albumImg} alt="img album" />
                   <div className="sings__info-img-icon">
                     <FaPlay />
                   </div>

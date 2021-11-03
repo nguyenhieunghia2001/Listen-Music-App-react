@@ -6,7 +6,7 @@ import { AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
 
 const Player = ({ url }) => {
   const audioRef = useRef();
-  const { currentSing, changeSing, songLikeList } = useContext(SingContext);
+  const { currentSing, changeSing } = useContext(SingContext);
   const [songsState, setSongsState] = useState([]);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);

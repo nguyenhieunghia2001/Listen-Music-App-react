@@ -1,22 +1,19 @@
-import React, { useContext, useState } from "react";
-import { SingContext } from "../../context/SingContext";
+import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../features/setting/favoriteSlice";
 
 function SongLike({ song }) {
   const dispatch = useDispatch();
-  const songLikeList = useSelector((state) => state.songs);
+  const songLikeList = useSelector((state) => state.favorite.songs);
 
-  const {  addLike, removeLike } = useContext(SingContext);
   const [isLike, setIsLike] = useState(
     songLikeList?.map((item) => item.id).indexOf(song.id) > -1 ? true : false
   );
-
   const toggle = () => {
-    !isLike ? addLike(song) : removeLike(song);
+    !isLike ? dispatch(addFavorite(song)) : dispatch(removeFavorite(song));
     setIsLike(!isLike);
   };
-  // console.log(t);
   return (
     <div onClick={toggle}>
       {isLike ? (

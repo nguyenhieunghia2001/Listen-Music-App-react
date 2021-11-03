@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Table, Container} from "reactstrap";
 import SingItem from "../../components/Sing/SingItem";
-import { SingContext } from "../../context/SingContext";
 import './profile.scss'
 import AvatarImg from '../../images/avatar.jpg'
+import { useSelector } from "react-redux";
 
 function Profile()   {
-  const { songLikeList } = useContext(SingContext);
+  const songLikeList = useSelector((state) => state.favorite.songs);
   return (
     // <Layout>
       <Container>

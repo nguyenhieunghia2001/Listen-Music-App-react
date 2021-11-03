@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export const SingContext = React.createContext();
 
-export default function ({ children }) {
+const SingProvider = ({ children }) => {
   const [currentSingState, setCurrentSingState] = useState({});
   const [songLikeState, setSongLikeState] = useState([]);
 
@@ -14,7 +14,7 @@ export default function ({ children }) {
     setSongLikeState([...songLikeState, song]);
   };
   const removeLike = async (song) => {
-    console.log('remove', song);
+    console.log("remove", song);
     const index = songLikeState.map((item) => item.id).indexOf(song.id);
     if (index < 0) return;
     const arrNew = [
@@ -37,4 +37,5 @@ export default function ({ children }) {
       {children}
     </SingContext.Provider>
   );
-}
+};
+export default SingProvider;

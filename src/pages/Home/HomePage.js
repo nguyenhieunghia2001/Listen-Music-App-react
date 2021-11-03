@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import albumImg from "../../images/mixtape.jpg";
 import PlayList from "../../components/Sing/SingList";
+import { useDispatch, useSelector } from "react-redux";
+import { fetch } from "../../features/setting/songSlice";
 import "./home.scss";
-import axios from "axios";
 
 const HomePage = () => {
-  const [singSate, setSingSate] = useState([]);
+  const dispacth = useDispatch();
+  const singState = useSelector((state) => state.music?.songs);
   //DidUpdate
-  useEffect( () => {
-    const fetch = async () => {
-      const { data } = await axios.get(
-        "https://g0lq8.sse.codesandbox.io/sings"
-      );
-      localStorage.setItem("songs", JSON.stringify(data));
-      setSingSate(data);
-    };
-    fetch();
-  }, []);
+  useEffect(() => {
+    dispacth(fetch());
+  }, [dispacth]);
 
   return (
     // <Layout>
@@ -46,7 +41,7 @@ const HomePage = () => {
         </div>
         <div className="col-8">
           <div className="sings">
-            <PlayList sings={singSate} />
+            <PlayList sings={singState} />
           </div>
         </div>
       </div>

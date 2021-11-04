@@ -2,15 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   songs: [],
+  loading: false,
 };
 
 const songs = createSlice({
   name: "music",
   initialState,
   reducers: {
-    fetch: () => {},
+    fetch: (state, _) => {
+      state.loading = true;
+    },
     setSong: (state, action) => {
       state.songs = action.payload;
+      state.loading = false
     },
   },
 });

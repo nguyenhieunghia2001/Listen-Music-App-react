@@ -45,13 +45,13 @@ $hoverSongItem: #2d2539de;
     }
     tr {
       border-color: $hoverSongItem !important;
-      &:hover{
+      &:hover {
         background: $hoverSongItem;
-        .sings__info-img-icon{
+        .sings__info-img-icon {
           z-index: 10;
         }
-        img{
-          opacity: .4;
+        img {
+          opacity: 0.4;
         }
       }
     }
@@ -69,7 +69,7 @@ $hoverSongItem: #2d2539de;
         border-radius: 4px;
         z-index: 1;
       }
-      &-icon{
+      &-icon {
         z-index: -1;
         position: absolute;
         top: 50%;
@@ -103,5 +103,19 @@ $hoverSongItem: #2d2539de;
   &-md {
     font-size: 25px;
     cursor: pointer;
+  }
+}
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #22222230;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
   }
 }
